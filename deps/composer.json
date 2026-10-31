@@ -1,0 +1,21 @@
+{
+    "name": "opotopo/bitrix-seller-api-deps",
+    "description": "Зависимости рантайма модуля 1С-Битрикс до сборки php-scoper",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "nyholm/psr7": "^1.8",
+        "opotopo/seller-api": "^1.3",
+        "psr/http-factory": "^1.1"
+    },
+    "replace": {
+        "psr/http-client": "*",
+        "psr/http-message": "*"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

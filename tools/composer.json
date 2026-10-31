@@ -1,0 +1,13 @@
+{
+    "name": "opotopo/bitrix-seller-api-tools",
+    "description": "Сборка зависимостей модуля 1С-Битрикс",
+    "type": "project",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "humbug/php-scoper": "^0.18.20"
+    },
+    "config": {
+        "sort-packages": true
+    }
+}

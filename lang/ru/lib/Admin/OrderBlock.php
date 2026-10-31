@@ -1,0 +1,29 @@
+<?php
+
+$MESS['MASSTECH_OPOTOPO_BLOCK_TITLE'] = 'ОПОТОПО';
+$MESS['MASSTECH_OPOTOPO_BLOCK_READ_FAILED'] = 'Заказ ОПОТОПО не прочитан: #ERROR#';
+$MESS['MASSTECH_OPOTOPO_BLOCK_DISPATCH_DUE'] = 'Передать до #DATE#';
+$MESS['MASSTECH_OPOTOPO_BLOCK_DOCUMENT_LABEL'] = 'Ярлык';
+$MESS['MASSTECH_OPOTOPO_BLOCK_DOCUMENT_WAYBILL'] = 'Накладная';
+$MESS['MASSTECH_OPOTOPO_BLOCK_DOCUMENT_MISSING'] = 'У заказа нет такого документа отправления.';
+$MESS['MASSTECH_OPOTOPO_BLOCK_DISPATCH_OWN'] = 'Передать в доставку';
+$MESS['MASSTECH_OPOTOPO_BLOCK_DISPATCH_PICKUP'] = 'Готов к самовывозу';
+$MESS['MASSTECH_OPOTOPO_BLOCK_DISPATCH_CARRIER'] = 'Отправить службой доставки';
+$MESS['MASSTECH_OPOTOPO_BLOCK_CANCEL_REASON'] = 'Причина отмены';
+$MESS['MASSTECH_OPOTOPO_BLOCK_CANCEL'] = 'Отменить заказ на ОПОТОПО';
+$MESS['MASSTECH_OPOTOPO_BLOCK_CARRIER_NAME'] = 'Служба доставки';
+$MESS['MASSTECH_OPOTOPO_BLOCK_TRACKING_NUMBER'] = 'Трек-номер';
+$MESS['MASSTECH_OPOTOPO_BLOCK_TRACKING_URL'] = 'Адрес отслеживания';
+$MESS['MASSTECH_OPOTOPO_BLOCK_POINTS_FAILED'] = 'Пункты приёма не прочитаны: #ERROR#';
+$MESS['MASSTECH_OPOTOPO_BLOCK_DROP_OFF_POINT'] = 'Передать службе';
+$MESS['MASSTECH_OPOTOPO_BLOCK_COURIER_PICKUP'] = 'Забор курьером службы';
+$MESS['MASSTECH_OPOTOPO_BLOCK_PLACE'] = 'Место #NUMBER#';
+$MESS['MASSTECH_OPOTOPO_BLOCK_SIZE_WEIGHT'] = 'Вес, г';
+$MESS['MASSTECH_OPOTOPO_BLOCK_SIZE_LENGTH'] = 'Длина, мм';
+$MESS['MASSTECH_OPOTOPO_BLOCK_SIZE_WIDTH'] = 'Ширина, мм';
+$MESS['MASSTECH_OPOTOPO_BLOCK_SIZE_HEIGHT'] = 'Высота, мм';
+$MESS['MASSTECH_OPOTOPO_BLOCK_PLACES_HINT'] = 'Без мест каждая единица товара уходит отдельным местом в упаковке товара.';
+$MESS['MASSTECH_OPOTOPO_BLOCK_ADD_PLACE'] = 'Добавить место';
+$MESS['MASSTECH_OPOTOPO_BLOCK_PLACE_INCOMPLETE'] = 'Место #NUMBER#: укажите вес и все три габарита.';
+$MESS['MASSTECH_OPOTOPO_BLOCK_REFUSED'] = 'ОПОТОПО отклонила действие: #ERROR#';
+$MESS['MASSTECH_OPOTOPO_BLOCK_ACCESS_DENIED'] = 'Недостаточно прав на заказы магазина.';

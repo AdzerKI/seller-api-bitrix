@@ -1,0 +1,30 @@
+<?php
+
+$MESS['MASSTECH_OPOTOPO_TAB_PLATFORM'] = 'Площадка';
+$MESS['MASSTECH_OPOTOPO_TAB_CATALOG'] = 'Каталог';
+$MESS['MASSTECH_OPOTOPO_TAB_ORDERS'] = 'Заказы';
+$MESS['MASSTECH_OPOTOPO_URL'] = 'Адрес API площадки';
+$MESS['MASSTECH_OPOTOPO_KEY'] = 'Ключ Seller API';
+$MESS['MASSTECH_OPOTOPO_ORGANIZATION'] = 'ID организации';
+$MESS['MASSTECH_OPOTOPO_PUBLISH'] = 'Публиковать объявления сразу';
+$MESS['MASSTECH_OPOTOPO_WEBHOOK_SECRET'] = 'Секрет endpoint вебхуков';
+$MESS['MASSTECH_OPOTOPO_IBLOCK_ID'] = 'Инфоблок каталога';
+$MESS['MASSTECH_OPOTOPO_SKU_PROPERTY'] = 'Свойство артикула';
+$MESS['MASSTECH_OPOTOPO_BRAND_PROPERTY'] = 'Свойство бренда';
+$MESS['MASSTECH_OPOTOPO_GALLERY_PROPERTY'] = 'Свойство фото галереи';
+$MESS['MASSTECH_OPOTOPO_PRICE_TYPE'] = 'Тип цены';
+$MESS['MASSTECH_OPOTOPO_SITE_ID'] = 'Сайт заказов';
+$MESS['MASSTECH_OPOTOPO_PERSON_TYPE_ID'] = 'Тип плательщика';
+$MESS['MASSTECH_OPOTOPO_BUYER_ID'] = 'ID покупателя заказов';
+$MESS['MASSTECH_OPOTOPO_PAY_SYSTEM_ID'] = 'Платёжная система заказов';
+$MESS['MASSTECH_OPOTOPO_WEBHOOK_URL'] = 'Адрес приёма';
+$MESS['MASSTECH_OPOTOPO_SAVE'] = 'Сохранить';
+$MESS['MASSTECH_OPOTOPO_SYNC_TITLE'] = 'Синхронизация';
+$MESS['MASSTECH_OPOTOPO_SYNC_NEVER'] = 'Каталог ещё не синхронизирован.';
+$MESS['MASSTECH_OPOTOPO_SYNC_FAILED'] = 'Прогон #DATE# не удался: #ERROR#';
+$MESS['MASSTECH_OPOTOPO_SYNC_REPORT'] = 'Последний прогон #DATE#: создано #CREATED#, обновлено #UPDATED#, без изменений #SKIPPED#, снято #ARCHIVED#, отказов #FAILED#.';
+$MESS['MASSTECH_OPOTOPO_SYNC_NOW'] = 'Синхронизировать сейчас';
+$MESS['MASSTECH_OPOTOPO_FAILURE_PRODUCT'] = 'Товар';
+$MESS['MASSTECH_OPOTOPO_FAILURE_SKU'] = 'Артикул';
+$MESS['MASSTECH_OPOTOPO_FAILURE_ERROR'] = 'Отказ';
+$MESS['MASSTECH_OPOTOPO_FAILURE_DETAILS'] = 'Подробности';
