@@ -6,6 +6,7 @@ use Bitrix\Main\Engine\ActionFilter\Authentication;
 use Bitrix\Main\Engine\ActionFilter\Csrf;
 use Bitrix\Main\Engine\ActionFilter\HttpMethod;
 use Bitrix\Main\Engine\Controller;
+use Bitrix\Main\Engine\Resolver;
 use Bitrix\Main\Engine\UrlManager;
 use Bitrix\Main\HttpRequest;
 use Bitrix\Main\HttpResponse;
@@ -18,7 +19,7 @@ final class Webhook extends Controller
 
     public static function url(): string
     {
-        return (string) UrlManager::getInstance()->createByController(new self, self::ACTION, [], true);
+        return (string) UrlManager::getInstance()->create(Resolver::getNameByController(new self).'.'.self::ACTION, [], true);
     }
 
     public function configureActions(): array

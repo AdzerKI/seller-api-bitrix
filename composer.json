@@ -1,5 +1,5 @@
 {
-    "name": "opotopo/bitrix-seller-api",
+    "name": "opotopo/seller-api-bitrix",
     "description": "Выгрузка каталога магазина 1С-Битрикс на площадку ОПОТОПО через Seller API",
     "type": "bitrix-module",
     "license": "MIT",
@@ -12,7 +12,7 @@
         "marketplace"
     ],
     "support": {
-        "source": "https://github.com/AdzerKI/bitrix-seller-api"
+        "source": "https://github.com/AdzerKI/seller-api-bitrix"
     },
     "require": {
         "php": "^8.2"

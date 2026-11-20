@@ -1,5 +1,5 @@
 {
-    "name": "opotopo/bitrix-seller-api-deps",
+    "name": "opotopo/seller-api-bitrix-deps",
     "description": "Зависимости рантайма модуля 1С-Битрикс до сборки php-scoper",
     "type": "project",
     "license": "MIT",

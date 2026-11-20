@@ -19,13 +19,14 @@ use Masstech\Opotopo\Vendor\Opotopo\SellerApi\Problem;
 
 defined('B_PROLOG_INCLUDED') || exit;
 
-global $APPLICATION;
+global $APPLICATION, $mid;
+
+Loader::requireModule($mid);
 
 if ($APPLICATION->GetGroupRight(Settings::MODULE) < 'W') {
     $APPLICATION->AuthForm(Loc::getMessage('ACCESS_DENIED'));
 }
 
-Loader::requireModule(Settings::MODULE);
 Loader::requireModule('iblock');
 Loader::requireModule('catalog');
 Loader::requireModule('sale');

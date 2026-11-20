@@ -1,5 +1,5 @@
 {
-    "name": "opotopo/bitrix-seller-api-tools",
+    "name": "opotopo/seller-api-bitrix-tools",
     "description": "Сборка зависимостей модуля 1С-Битрикс",
     "type": "project",
     "license": "MIT",
