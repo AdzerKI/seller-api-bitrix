@@ -100,7 +100,7 @@ final class OrderBlock
         }
         if (in_array(self::DISPATCH, $available, true)) {
             $html .= match (true) {
-                $method === DispatchForm::OWN_DELIVERY => self::tracking($fulfillment),
+                $method === DispatchForm::OWN_DELIVERY => self::tracking(),
                 in_array($method, DispatchForm::CARRIER, true) => self::carrier($orders, $orderId, $fulfillment),
                 default => '',
             };
@@ -120,16 +120,16 @@ final class OrderBlock
         return $html.'<p class="adm-info-message-red" data-opotopo-error hidden></p></div>';
     }
 
-    private static function tracking(array $fulfillment): string
+    private static function tracking(): string
     {
         $html = '';
         foreach (array_combine(DispatchForm::TRACKING, [
-            ['carrier_name', 'text', false],
-            ['tracking_number', 'text', $fulfillment['trackingRequired']],
-            ['tracking_url', 'url', false],
-        ]) as $name => [$label, $type, $required]) {
+            ['carrier_name', 'text'],
+            ['tracking_number', 'text'],
+            ['tracking_url', 'url'],
+        ]) as $name => [$label, $type]) {
             $html .= '<p><label>'.htmlspecialcharsbx(self::text($label)).'<br>'
-                .'<input type="'.$type.'" size="40" name="fields['.$name.']"'.($required ? ' required' : '').'></label></p>';
+                .'<input type="'.$type.'" size="40" name="fields['.$name.']"></label></p>';
         }
 
         return $html;
@@ -159,7 +159,7 @@ final class OrderBlock
         $place .= '</p>';
         foreach ($fulfillment['items'] as $line) {
             $place .= '<p><label>'.htmlspecialcharsbx(implode(self::NAME_SEPARATOR, array_filter([$line['title'] ?? null, $line['variantName'] ?? null])))
-                .' <input type="number" min="0" max="'.(int) $line['quantity'].'" size="4" name="fields['.self::PLACES.']['.self::INDEX.']['.DispatchForm::LINES.']['
+                .' <input type="number" min="0" step="any" max="'.htmlspecialcharsbx((string) $line['quantity']).'" size="4" name="fields['.self::PLACES.']['.self::INDEX.']['.DispatchForm::LINES.']['
                 .htmlspecialcharsbx($line['id']).']"></label></p>';
         }
         $place .= '</fieldset>';

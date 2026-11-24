@@ -25,5 +25,6 @@ $MESS['MASSTECH_OPOTOPO_BLOCK_SIZE_HEIGHT'] = 'Высота, мм';
 $MESS['MASSTECH_OPOTOPO_BLOCK_PLACES_HINT'] = 'Без мест каждая единица товара уходит отдельным местом в упаковке товара.';
 $MESS['MASSTECH_OPOTOPO_BLOCK_ADD_PLACE'] = 'Добавить место';
 $MESS['MASSTECH_OPOTOPO_BLOCK_PLACE_INCOMPLETE'] = 'Место #NUMBER#: укажите вес и все три габарита.';
+$MESS['MASSTECH_OPOTOPO_BLOCK_TRACKING_MISSING'] = 'Укажите трек-номер.';
 $MESS['MASSTECH_OPOTOPO_BLOCK_REFUSED'] = 'ОПОТОПО отклонила действие: #ERROR#';
 $MESS['MASSTECH_OPOTOPO_BLOCK_ACCESS_DENIED'] = 'Недостаточно прав на заказы магазина.';

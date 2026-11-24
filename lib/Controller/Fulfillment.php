@@ -10,6 +10,7 @@ use Masstech\Opotopo\Admin\OrderBlock;
 use Masstech\Opotopo\Platform;
 use Masstech\Opotopo\Vendor\Opotopo\SellerApi\Orders\DispatchForm;
 use Masstech\Opotopo\Vendor\Opotopo\SellerApi\Orders\InvalidPlace;
+use Masstech\Opotopo\Vendor\Opotopo\SellerApi\Orders\MissingTrackingNumber;
 use Masstech\Opotopo\Vendor\Opotopo\SellerApi\Problem;
 use Throwable;
 
@@ -79,6 +80,10 @@ final class Fulfillment extends Controller
             return ['status' => $action($orderId)];
         } catch (InvalidPlace $place) {
             $this->addError(new Error(OrderBlock::text('place_incomplete', ['#NUMBER#' => $place->number])));
+
+            return null;
+        } catch (MissingTrackingNumber) {
+            $this->addError(new Error(OrderBlock::text('tracking_missing')));
 
             return null;
         } catch (Throwable $failure) {

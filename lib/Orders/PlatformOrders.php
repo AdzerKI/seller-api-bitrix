@@ -24,6 +24,7 @@ use Masstech\Opotopo\Sync;
 use Masstech\Opotopo\Sync\TableItemStore;
 use Masstech\Opotopo\Tables\OrderTable;
 use Masstech\Opotopo\Tables\PurchaseTable;
+use Masstech\Opotopo\Vendor\Opotopo\SellerApi\Currency;
 use Masstech\Opotopo\Vendor\Opotopo\SellerApi\SellerApiClient;
 use Masstech\Opotopo\Vendor\Opotopo\SellerApi\Webhooks\FulfillmentStatusChanged;
 use Masstech\Opotopo\Vendor\Opotopo\SellerApi\Webhooks\PurchaseCreated;
@@ -138,14 +139,14 @@ final class PlatformOrders
     {
         $siteId = Settings::get(Settings::SITE);
         $buyerId = Settings::id(Settings::BUYER);
-        $order = Order::create($siteId, $buyerId, $fulfillment['currency']);
+        $order = Order::create($siteId, $buyerId, Currency::PLATFORM);
         self::check($order->setPersonTypeId(Settings::id(Settings::PERSON_TYPE)));
         self::check($order->setField('EXTERNAL_ORDER', self::YES));
         $basket = Basket::create($siteId);
         $basket->setFUserId(Fuser::getIdByUserId($buyerId));
         $purchases = [];
         foreach ($fulfillment['items'] as $line) {
-            $purchases[$line['id']] = $this->line($basket, $line, $fulfillment['currency']);
+            $purchases[$line['id']] = $this->line($basket, $line);
         }
         self::check($order->setBasket($basket));
         $this->receiver($order, $fulfillment);
@@ -187,7 +188,7 @@ final class PlatformOrders
         }
     }
 
-    private function line(Basket $basket, array $line, string $currency): BasketItem
+    private function line(Basket $basket, array $line): BasketItem
     {
         $record = $this->record($line['advertisementId']);
         $productId = $record === null ? 0 : $this->productId($record, $line['variantName'] ?? null);
@@ -196,7 +197,7 @@ final class PlatformOrders
         self::check($item->setFields([
             'NAME' => implode(self::NAME_SEPARATOR, array_filter([$line['title'] ?? $record?->value(ProductRecord::TITLE), $line['variantName'] ?? null])),
             'QUANTITY' => $line['quantity'],
-            'CURRENCY' => $currency,
+            'CURRENCY' => Currency::PLATFORM,
             'PRICE' => $price,
             'BASE_PRICE' => $price,
             'CUSTOM_PRICE' => self::YES,

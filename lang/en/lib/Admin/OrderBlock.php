@@ -25,5 +25,6 @@ $MESS['MASSTECH_OPOTOPO_BLOCK_SIZE_HEIGHT'] = 'Height, mm';
 $MESS['MASSTECH_OPOTOPO_BLOCK_PLACES_HINT'] = 'Without places, every unit ships as its own place with the product package.';
 $MESS['MASSTECH_OPOTOPO_BLOCK_ADD_PLACE'] = 'Add place';
 $MESS['MASSTECH_OPOTOPO_BLOCK_PLACE_INCOMPLETE'] = 'Place #NUMBER#: enter the weight and all three dimensions.';
+$MESS['MASSTECH_OPOTOPO_BLOCK_TRACKING_MISSING'] = 'Enter the tracking number.';
 $MESS['MASSTECH_OPOTOPO_BLOCK_REFUSED'] = 'OPOTOPO refused the action: #ERROR#';
 $MESS['MASSTECH_OPOTOPO_BLOCK_ACCESS_DENIED'] = 'Not enough rights for shop orders.';

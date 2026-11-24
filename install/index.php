@@ -40,7 +40,7 @@ class masstech_opotopo extends CModule
 
     public $PARTNER_NAME;
 
-    public $PARTNER_URI = 'https://opotopo.com';
+    public $PARTNER_URI;
 
     public function __construct()
     {
@@ -51,6 +51,7 @@ class masstech_opotopo extends CModule
         $this->MODULE_NAME = Loc::getMessage('MASSTECH_OPOTOPO_MODULE_NAME');
         $this->MODULE_DESCRIPTION = Loc::getMessage('MASSTECH_OPOTOPO_MODULE_DESCRIPTION');
         $this->PARTNER_NAME = Loc::getMessage('MASSTECH_OPOTOPO_PARTNER_NAME');
+        $this->PARTNER_URI = 'https://opotopo.com';
     }
 
     public function DoInstall(): bool

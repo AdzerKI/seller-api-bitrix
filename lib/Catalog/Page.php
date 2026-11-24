@@ -8,12 +8,11 @@ use Bitrix\Catalog\StoreBarcodeTable;
 use CCatalogSku;
 use CCurrencyRates;
 use CIBlockElement;
+use Masstech\Opotopo\Vendor\Opotopo\SellerApi\Currency;
 
 final class Page
 {
     private const TYPES = [ProductTable::TYPE_PRODUCT, ProductTable::TYPE_SKU];
-
-    private const CURRENCY = 'RUB';
 
     private const ACTIVE = 'Y';
 
@@ -190,9 +189,9 @@ final class Page
                 continue;
             }
             $from[$id] = $quantity;
-            $this->prices[$id] = $row['CURRENCY'] === self::CURRENCY
+            $this->prices[$id] = $row['CURRENCY'] === Currency::PLATFORM
                 ? (float) $row['PRICE']
-                : (float) CCurrencyRates::ConvertCurrency($row['PRICE'], $row['CURRENCY'], self::CURRENCY);
+                : (float) CCurrencyRates::ConvertCurrency($row['PRICE'], $row['CURRENCY'], Currency::PLATFORM);
         }
     }
 
