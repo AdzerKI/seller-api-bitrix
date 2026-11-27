@@ -18,6 +18,8 @@ final class ProductRecord implements ItemRecord
 
     public const QUANTITY = 'quantity';
 
+    public const UNIT = 'unit';
+
     public const BARCODE = 'barcode';
 
     public const BRAND = 'brand';
@@ -71,6 +73,7 @@ final class ProductRecord implements ItemRecord
                 ?: Values::text($element['PREVIEW_TEXT'], $element['PREVIEW_TEXT_TYPE']),
             self::PRICE => $this->sku() ? $this->lowestPrice() : $this->page->price($this->id),
             self::QUANTITY => $this->quantity(),
+            self::UNIT => $this->unit(),
             self::BARCODE => $this->page->barcode($this->id),
             self::BRAND => $this->texts($scope->brandId)[0] ?? null,
             self::SHOP_CATEGORY => $scope->sectionPath((int) $element['IBLOCK_SECTION_ID']),
@@ -106,20 +109,30 @@ final class ProductRecord implements ItemRecord
         return $prices === [] ? null : min($prices);
     }
 
-    private function quantity(): ?int
+    private function quantity(): ?float
     {
         $products = $this->sku()
             ? array_map(fn (int $offerId) => $this->page->product($offerId), $this->offerIds())
             : [$this->page->product($this->id)];
-        $total = 0;
+        $total = 0.0;
         foreach ($products as $product) {
             if ($product['QUANTITY_TRACE'] !== self::TRACED) {
                 return null;
             }
-            $total += max(0, (int) floor((float) $product['QUANTITY']));
+            $total += max(0.0, (float) $product['QUANTITY']);
         }
 
         return $total;
+    }
+
+    private function unit(): ?string
+    {
+        $codes = array_unique(array_map(
+            fn (array $product) => $this->page->scope->measureCode($product['MEASURE']),
+            $this->priced(),
+        ));
+
+        return count($codes) === 1 ? reset($codes) : null;
     }
 
     /**
@@ -160,10 +173,16 @@ final class ProductRecord implements ItemRecord
 
     private function size(string $field, int $divisor): float
     {
-        $products = array_map(fn (VariantRecord $variant) => $this->page->product($variant->id()), $this->variants())
-            ?: [$this->page->product($this->id)];
+        return max(array_map(static fn (array $product) => (float) $product[$field] / $divisor, $this->priced()));
+    }
 
-        return max(array_map(static fn (array $product) => (float) $product[$field] / $divisor, $products));
+    /**
+     * @return non-empty-list<array<string, mixed>>
+     */
+    private function priced(): array
+    {
+        return array_map(fn (VariantRecord $variant) => $this->page->product($variant->id()), $this->variants())
+            ?: [$this->page->product($this->id)];
     }
 
     /**

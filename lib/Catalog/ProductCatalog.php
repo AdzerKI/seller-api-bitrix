@@ -2,6 +2,7 @@
 
 namespace Masstech\Opotopo\Catalog;
 
+use Bitrix\Catalog\MeasureTable;
 use Bitrix\Catalog\Product\PropertyCatalogFeature;
 use Bitrix\Iblock\ElementTable;
 use Bitrix\Iblock\Model\PropertyFeature;
@@ -26,6 +27,7 @@ final class ProductCatalog implements CatalogSource
                 'description' => ProductRecord::DESCRIPTION,
                 'price' => ProductRecord::PRICE,
                 'quantity' => ProductRecord::QUANTITY,
+                'unit' => ProductRecord::UNIT,
                 'barcode' => ProductRecord::BARCODE,
                 'brand' => ProductRecord::BRAND,
             ],
@@ -114,6 +116,15 @@ final class ProductCatalog implements CatalogSource
         while ($row = $rows->fetch()) {
             $sections[(int) $row['ID']] = [$row['NAME'], (int) $row['IBLOCK_SECTION_ID']];
         }
+        $measures = [];
+        $defaultMeasure = null;
+        $rows = MeasureTable::getList(['select' => ['ID', 'CODE', 'IS_DEFAULT']]);
+        while ($row = $rows->fetch()) {
+            $measures[(int) $row['ID']] = (string) $row['CODE'];
+            if ($row['IS_DEFAULT'] === self::ACTIVE) {
+                $defaultMeasure = (string) $row['CODE'];
+            }
+        }
 
         return new Scope(
             $iblockId,
@@ -128,6 +139,8 @@ final class ProductCatalog implements CatalogSource
             )),
             $offersIblockId > 0 ? array_map('intval', PropertyCatalogFeature::getOfferTreePropertyCodes($offersIblockId) ?? []) : [],
             $sections,
+            $measures,
+            $defaultMeasure,
         );
     }
 

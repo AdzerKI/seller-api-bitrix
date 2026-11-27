@@ -6,7 +6,7 @@
     "require": {
         "php": "^8.2",
         "nyholm/psr7": "^1.8",
-        "opotopo/seller-api": "^1.3",
+        "opotopo/seller-api": "^1.4.0",
         "psr/http-factory": "^1.1"
     },
     "replace": {

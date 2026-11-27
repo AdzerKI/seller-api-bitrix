@@ -161,7 +161,7 @@ final class Page
             return;
         }
         $rows = ProductTable::getList([
-            'select' => ['ID', 'TYPE', 'QUANTITY', 'QUANTITY_TRACE', 'WEIGHT', 'LENGTH', 'WIDTH', 'HEIGHT'],
+            'select' => ['ID', 'TYPE', 'QUANTITY', 'QUANTITY_TRACE', 'MEASURE', 'WEIGHT', 'LENGTH', 'WIDTH', 'HEIGHT'],
             'filter' => ['@ID' => $ids, '@TYPE' => $types],
         ]);
         while ($row = $rows->fetch()) {

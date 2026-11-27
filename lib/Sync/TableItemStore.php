@@ -76,6 +76,7 @@ final class TableItemStore implements ItemStore
             'select' => ['MODEL_KEY', 'SKU', 'ERROR', 'ERROR_DETAILS'],
             'filter' => ['=CATALOG' => $catalog, '!==ERROR' => null],
             'order' => ['ID' => 'ASC'],
+            'limit' => self::LISTED_FAILURES,
         ])->fetchAll();
     }
 }

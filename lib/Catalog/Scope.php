@@ -8,6 +8,7 @@ final class Scope
      * @param  list<int>  $attributeIds
      * @param  list<int>  $offerTreeIds
      * @param  array<int, array{string, int}>  $sections
+     * @param  array<int, string>  $measures
      */
     public function __construct(
         public readonly int $iblockId,
@@ -19,7 +20,14 @@ final class Scope
         public readonly array $attributeIds,
         public readonly array $offerTreeIds,
         private readonly array $sections,
+        private readonly array $measures,
+        private readonly ?string $defaultMeasure,
     ) {}
+
+    public function measureCode(mixed $measureId): ?string
+    {
+        return (int) $measureId > 0 ? $this->measures[(int) $measureId] ?? null : $this->defaultMeasure;
+    }
 
     /**
      * @return list<int>
